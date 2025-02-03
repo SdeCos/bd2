@@ -1,0 +1,2 @@
+# Informacion docker bd2
+
