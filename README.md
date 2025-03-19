@@ -1,7 +1,6 @@
-# Informacion docker bd2
+# Docker bd2
 
 ## Mongodb
 
 Conectarse a la base de datos mediante terminal
-mongosh "mongodb://localhost:3307" -u saul -p 1234 --authenticationDatabase admin
-
+mongosh "mongodb://localhost:27018" -u saul -p 1234 --authenticationDatabase admin
