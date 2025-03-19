@@ -9,7 +9,7 @@ class DB
 
   public function __construct()
   {
-    $this->host = '127.0.0.1:3307';
+    $this->host = '127.0.0.1:3306';
     $this->db = 'uni_2025';
     $this->user = 'saul';
     $this->password = '1234';
@@ -30,4 +30,3 @@ class DB
     }
   }
 }
-
