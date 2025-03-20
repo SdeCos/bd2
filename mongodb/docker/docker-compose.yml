@@ -11,6 +11,18 @@ services:
       - "27018:27017"
     volumes:
       - mongodb-data:/data/db
+  mysql:
+    image: mysql:latest
+    container_name: mysql_bd
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql_data:/var/lib/mysql
+      - ./mysql_shared:/shared-folder
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
 
 volumes:
   mongodb-data:

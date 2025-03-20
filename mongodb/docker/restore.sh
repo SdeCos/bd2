@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Define variables
-BACKUP_DIR="./data"
-MONGO_INITDB_ROOT_USERNAME="root"
-MONGO_INITDB_ROOT_PASSWORD="password"
+BACKUP_DIR="./mongodb_backups"
+MONGO_INITDB_ROOT_USERNAME="saul"
+MONGO_INITDB_ROOT_PASSWORD="1234"
 CONTAINER_NAME="mongodb"
 
 # Find the latest backup directory

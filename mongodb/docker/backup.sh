@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # Define variables
-BACKUP_DIR="./data"
+BACKUP_DIR="./mongodb_backups"
 TIMESTAMP=$(date +"%F_%H-%M")
 BACKUP_PATH="$BACKUP_DIR/mongodb_backup_$TIMESTAMP"
-MONGO_INITDB_ROOT_USERNAME="root"
-MONGO_INITDB_ROOT_PASSWORD="password"
+MONGO_INITDB_ROOT_USERNAME="saul"
+MONGO_INITDB_ROOT_PASSWORD="1234"
 CONTAINER_NAME="mongodb"
 
 # Create backup directory if it doesn't exist
