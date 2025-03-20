@@ -14,8 +14,4 @@ if ($method == "OPTIONS") {
 $api = new GetData();
 $data = $api->getAll();
 
-/* Convert the array fetched from MySQL to JSON with indentation */
 echo json_encode($data, JSON_PRETTY_PRINT);
-
-/* Expose the data via "php -S localhost:8000 index.php" */
-

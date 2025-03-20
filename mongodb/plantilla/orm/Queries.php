@@ -1,5 +1,5 @@
 <?php
 
 return [
-  '1' => 'SELECT * FROM departamento',
+  '1' => 'SELECT * FROM takes',
 ];

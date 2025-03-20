@@ -7,7 +7,9 @@ export async function getdata() {
   try {
     return data;
   } catch (e) {
-    console.log("Some error");
+    console.log(
+      "Error recibiendo informacion del API php, comprueba que el servidor esta iniciado y en el puerto correspondiente",
+    );
     console.log(e);
     process.exit(0);
   }
