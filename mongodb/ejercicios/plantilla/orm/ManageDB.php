@@ -4,11 +4,15 @@ class ManageBD extends DB
 {
   public function getQueries()
   {
-    $matricula = $this->connect()->query('SELECT s.ID,s.name, s.tot_cred,  t.course_id, t.semester, t.year, t.grade  FROM student s INNER JOIN takes t WHERE s.ID = t.ID AND dept_name="Physics"');
-    $department = $this->connect()->query('SELECT *  FROM department d WHERE  d.dept_name="Physics"');
+    $data = $this->connect()->query('SELECT DISTINCT SUM(credits) as sum FROM course c INNER JOIN takes t WHERE c.course_id = t.course_id AND t.ID = id COLLATE utf8mb4_unicode_ci;');
+
+    $esquema1 = $this->connect()->query('SELECT * FROM course');
+    $esquema2 = $this->connect()->query('SELECT * FROM takes');
+
     $queries = array(
-      "matricula" => $matricula,
-      "department" => $department
+      "data" => $data,
+      "course" => $esquema1,
+      "take" => $esquema2,
     );
 
     return $queries;
@@ -17,4 +21,3 @@ class ManageBD extends DB
 	print_r($queries);
 	echo "</pre>";*/
 }
-
