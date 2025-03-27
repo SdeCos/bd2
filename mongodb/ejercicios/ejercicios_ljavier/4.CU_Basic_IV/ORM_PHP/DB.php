@@ -10,7 +10,7 @@ class DB
   public function __construct()
   {
     $this->host = '127.0.0.1:3308';
-    $this->db = 'uni_2025';
+    $this->db = 'mongo_examen_students';
     $this->user = 'saul';
     $this->password = '1234';
     //$this->charset = 'utf8mb4';*/
@@ -30,4 +30,3 @@ class DB
     }
   }
 }
-

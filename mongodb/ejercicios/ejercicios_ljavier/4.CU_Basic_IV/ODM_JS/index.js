@@ -1,11 +1,9 @@
 import mongoose from "mongoose";
 import { getdata } from "./api.js";
 const { Schema, model } = mongoose;
-let uri = "mongodb://saul:1234@127.0.0.1:27018/uni_2023_v2?authSource=admin";
-//trayendo la data del api
+let uri = "mongodb://saul:1234@127.0.0.1:27018/prueba1?authSource=admin";
 const query = await getdata()
   .then((data) => {
-    //console.log(data);
     return data;
   })
   .catch((error) => {
@@ -13,8 +11,6 @@ const query = await getdata()
     console.log(error);
     process.exit(0);
   });
-//console.log(query);
-// conectando a la bd
 const options = {
   autoIndex: false, // Don't build indexes
   maxPoolSize: 10, // Maintain up to 10 socket connections
@@ -34,109 +30,52 @@ mongoose.connect(uri, options).then(
   },
 );
 
-// definiendo schemas y modelos en mongoose
-
-const advisorSchema = new mongoose.Schema({
-  s_ID: { type: String },
-  i_ID: { type: String },
-});
-const classroomSchema = new mongoose.Schema({
-  building: { type: String },
-  room_number: { type: String },
-  capacity: { type: Number },
-});
-const programsSchema = new mongoose.Schema({
-  socialMediaHandles: {
-    type: Map,
-    of: String,
-  },
+const courseSchema = new Schema({
+  course_id: String,
+  title: String,
+  dept_name: String,
+  credits: Number,
+  ID: String,
+  sec_id: String,
+  semester: String,
+  year: Number,
 });
 
-const courseSchema = new mongoose.Schema({
-  course_id: { type: String },
-  title: { type: String },
-  dept_name: { type: String },
-  credits: { type: Number },
-  programs: { type: String },
-  programs_1: [{ type: String }],
+const instructorSchema = new Schema({
+  ID: String,
+  name: String,
+  dept_name: String,
+  salary: Number,
 });
 
-const departmentSchema = new mongoose.Schema({
-  dept_name: { type: String },
-  building: { type: String },
-  budget: { type: mongoose.Types.Decimal128 },
-});
-const instructorSchema = new mongoose.Schema({
-  ID: { type: String },
-  name: { type: String },
-  dept_name: { type: String },
-  salary: { type: mongoose.Types.Decimal128 },
-  activo: Boolean,
-  phone_extensions: [String],
+const jsonAllSchema = new Schema({
+  id: Number,
+  json_register: String,
 });
 
-const prereqSchema = new mongoose.Schema({
-  course_id: { type: String },
-  prereq_id: { type: String },
+const studentCourseSchema = new Schema({
+  ID: String,
+  name: String,
+  dept_name: String,
+  tot_cred: Number,
+  course_id: String,
+  sec_id: String,
+  semester: String,
+  year: Number,
 });
-const sectionSchema = new mongoose.Schema({
-  course_id: { type: String },
-  sec_id: { type: String },
-  semester: { type: String },
-  year: { type: mongoose.Types.Decimal128 },
-  building: { type: String },
-  room_number: { type: String },
-  time_slot_id: { type: String },
-});
-const studentSchema = new mongoose.Schema({
-  ID: { type: String },
-  name: { type: String },
-  dept_name: { type: String },
-  credits: { type: mongoose.Types.Decimal128 },
-  picture: Buffer,
-  grades: [String],
-});
-const takesSchema = new mongoose.Schema({
-  course_id: { type: String },
-  sec_id: { type: String },
-  semester: { type: String },
-  year: { type: mongoose.Types.Decimal128 },
-  grade: { type: String },
-  update: { type: Date, default: Date.now },
-});
-const teachesSchema = new mongoose.Schema({
-  ID: { type: String },
-  course_id: { type: String },
-  sec_id: { type: String },
-  semester: { type: String },
-  year: { type: mongoose.Types.Decimal128 },
-  update: { type: Date, default: Date.now },
-});
+// crear funcion insertData
 
-let advisor = new mongoose.model("advisor", advisorSchema);
-let classroom = new mongoose.model("classroom", classroomSchema);
-let course = new mongoose.model("course", courseSchema);
-let department = new mongoose.model("department", departmentSchema);
-let instructor = new mongoose.model("instructor", instructorSchema);
-let prereq = new mongoose.model("prereq", prereqSchema);
-let section = new mongoose.model("section", sectionSchema);
-let student = new mongoose.model("student", studentSchema);
-let takes = new mongoose.model("takes", takesSchema);
-let teaches = new mongoose.model("teaches", teachesSchema);
+let objectsagregations = new mongoose.model("objectsagregations", courseSchema);
+let objectsbasics = new mongoose.model("objectsbasics", instructorSchema);
+let objectscomplexes = new mongoose.model("objectscomplexes", jsonAllSchema);
+let objectsindexs = new mongoose.model("objectsindexs", studentCourseSchema);
 
 console.log(query.course);
 try {
-  let inserted_a = await advisor.insertMany(query.advisor);
-  let inserted_b = await classroom.insertMany(query.classroom);
-  let inserted_c = await course.insertMany(query.course);
-  let inserted_d = await department.insertMany(query.department);
-  let inserted_e = await instructor.insertMany(query.instructor);
-  let inserted_f = await prereq.insertMany(query.prereq);
-  let inserted_g = await section.insertMany(query.section);
-  let inserted_h = await student.insertMany(query.student);
-  let inserted_i = await takes.insertMany(query.takes);
-  let inserted_j = await teaches.insertMany(query.teaches);
-  //console.log(inserted_a);
+  let insert_a = await objectsagregations.insertMany(query.objectsagregations);
+  let insert_b = await objectsbasics.insertMany(query.objectsbasics);
+  let insert_c = await objectscomplexes.insertMany(query.objectscomplexes);
+  let insert_d = await objectsindexs.insertMany(query.objectsindexs);
   process.exit(0);
 } catch (e) {
   console.log("Some error");

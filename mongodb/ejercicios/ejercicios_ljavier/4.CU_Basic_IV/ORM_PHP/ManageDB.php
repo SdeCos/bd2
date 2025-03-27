@@ -1,34 +1,22 @@
 <?php
 include_once 'DB.php';
-class ManageBD extends DB{
-  public function getQueries(){
+class ManageBD extends DB
+{
+  public function getQueries()
+  {
 
-	$advisor = $this->connect()->query('SELECT * FROM advisor');
-	
-	$classroom =$this->connect()->query('SELECT * FROM classroom');
-	$course=$this->connect()->query('SELECT * FROM course');
-	$department=$this->connect()->query('SELECT * FROM department');
-	$instructor=$this->connect()->query('SELECT * FROM instructor');
-	$prereq=$this->connect()->query('SELECT * FROM prereq');
-	$section=$this->connect()->query('SELECT * FROM section');
-	$student=$this->connect()->query('SELECT * FROM student');
-	$takes=$this->connect()->query('SELECT * FROM takes');
-	$teaches=$this->connect()->query('SELECT * FROM teaches');
-	$queries = array (
-		"advisor"=>$advisor,
-		"classroom"=>$classroom,
-		"course"=>$course,
-		"department"=>$department,
-		"instructor"=>$instructor,
-		"prereq"=>$prereq,
-		"section"=>$section,
-		"student"=>$student,
-		"takes"=>$takes,
-	    "teaches"=>$teaches
-	);
-	
-		return $queries;
-	
-	}
+    $objectsagregations = $this->connect()->query('SELECT DISTINCT c.*, t.* FROM course AS c NATURAL JOIN takes AS t;');
+    $objectsbasics = $this->connect()->query('SELECT * FROM (SELECT i.* FROM instructor i WHERE salary > 90000) AS set_1 EXCEPT SELECT * FROM (SELECT i.* FROM instructor i WHERE i.dept_name = "Music" AND  i.dept_name = "Physic" ) AS set_2;');
+    $objectscomplexes = $this->connect()->query('SELECT * FROM json_all WHERE id=1;');
+    $objectsindexs = $this->connect()->query('SELECT DISTINCT s.*, t.* FROM student AS s  LEFT OUTER JOIN takes AS t ON s.id = t.ID');
+
+    $queries = array(
+      "objectsagregations" => $objectsagregations,
+      "objectsbasics" => $objectsbasics,
+      "objectscomplexes" => $objectscomplexes,
+      "objectsindexs" => $objectsindexs,
+    );
+
+    return $queries;
+  }
 }
-?>
