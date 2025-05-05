@@ -6,7 +6,7 @@ services:
       MONGO_INITDB_ROOT_USERNAME: saul
       MONGO_INITDB_ROOT_PASSWORD: 1234
     ports:
-      - "27018:27017"
+      - "27017:27017"
     volumes:
       - mongodb-data:/data/db
   mysql:

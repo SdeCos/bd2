@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import { getdata } from "./api.js";
 const { Schema, model } = mongoose;
-let uri = "mongodb://saul:1234@localhost:27018/uni_2025_ej3?authSource=admin";
+let uri = "mongodb://saul:1234@localhost:27018/uni_2025_ej33?authSource=admin";
 //trayendo la data del api
 const query = await getdata()
   .then((data) => {
