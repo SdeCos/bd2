@@ -18,8 +18,8 @@ services:
     ports:
       - "3308:3306"
     volumes:
-      - ./mysql_data_casa:/var/lib/mysql
-      ##- ./mysql_data_clase:/var/lib/mysql
+      ## - ./mysql_data_casa:/var/lib/mysql
+      - ./mysql_data_clase:/var/lib/mysql
       - ./mysql_shared:/shared-folder
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
       - ./my.cnf:/etc/mysql/my.cnf
