@@ -1,0 +1,23 @@
+{
+  "name": "asdf",
+  "version": "1.0.0",
+  "description": "## Mongodb",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SdeCos/bd2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SdeCos/bd2/issues"
+  },
+  "homepage": "https://github.com/SdeCos/bd2#readme",
+  "dependencies": {
+    "neo4j-driver": "^5.28.1"
+  },
+  "devDependencies": {}
+}
