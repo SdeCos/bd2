@@ -2,7 +2,7 @@
 
 ## Tipos de datos
 
-	### Relacional (SQL)
+### Relacional (SQL)
 - Tablas estrictas, con filas y columnas, conectadas por claves foráneas. Garantiza un seguimiento estricto de ACID (Atomicidad, Consistencia, Aislamiento y Durabilidad).
 - Se usa cuando el modelo de datos es altamente estructurado, las relaciones son estables y previsibles, y el sistema requiere una **integridad referencial estricta** y **consistencia absoluta** (ej.: transacciones bancarias, donde un error es inaceptable).
 - No se debería usar cuando el sistema exige distribuir la carga entre múltiples servidores (escalabilidad horizontal), o cuando el esquema de datos cambia constantemente o es impredecible.

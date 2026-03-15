@@ -1,8 +1,7 @@
 # Bases de Datos
 ## Índice
-* [comandos](comandos/README.md) -> Snippets rápidos y ayudas extra.
-* [mongodb/apuntes](mongodb/apuntes/README.md) -> Teoría y Sintaxis de MongoDB.
-* [mongodb/docker-compose](mongodb/docker-compose/README.md) -> Entornos para levantar la base de datos en el examen.
+* [Apuntes](mongodb/apuntes/README.md) -> Teoría y Sintaxis de MongoDB.
+* [docker-compose](mongodb/docker-compose/README.md) -> Entornos para levantar la base de datos en el examen.
 
 ## Setup Git
 **1. Generar nueva clave SSH (pulsa Enter a todo para ir rápido):**
